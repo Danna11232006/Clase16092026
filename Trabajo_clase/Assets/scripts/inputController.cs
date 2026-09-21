@@ -11,7 +11,7 @@ public class InputController : MonoBehaviour
     InputAction interactInput;
 
     [HideInInspector] public Vector2 moveVector;
-
+    PlayerInteraction playerInteraction;
     void Awake(){
 
         if (Instance == null)
@@ -25,16 +25,17 @@ public class InputController : MonoBehaviour
 
         moveInput = InputSystem.actions.FindAction("Move");
         interactInput = InputSystem.actions.FindAction("Interact");
+        playerInteraction = GetComponent<PlayerInteraction>();
     }
 
     private void OnEnable()
     {
-        interactInput.performed += OnInteractPerformed;
+        interactInput.started += OnInteractPerformed;
     }
 
     private void OnDisable()
     {
-        interactInput.performed -= OnInteractPerformed;
+        interactInput.started -= OnInteractPerformed;
     }
 
     void Update()
@@ -49,7 +50,18 @@ public class InputController : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("Interact");
+        if(Inventory.Instance.hasPotion)
+        {
+            playerInteraction.DrinkPotion();
+            Inventory.Instance.hasPotion = false;
+            Debug.Log("Se tomó: " + Inventory.Instance.potion.potionName);
+            Inventory.Instance.potion = null;
+            HUDManager.Instance.ResetPotionName();
+        }
+        else 
+        {
+            Debug.Log("No hay poción");
+        }
     }
 }
 
