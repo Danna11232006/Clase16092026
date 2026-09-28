@@ -38,4 +38,17 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("Resistance is: " + stamina);
         }
     }
+    
+    public void PlayerDamage()
+    {
+        if (health > 1)
+        {
+            health --;
+            Debug.Log(health);
+        }
+        else if (health == 1)
+        {
+            Debug.Log("Player died");
+        }
+    }
 }
