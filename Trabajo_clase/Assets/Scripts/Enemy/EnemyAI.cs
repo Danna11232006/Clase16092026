@@ -23,8 +23,13 @@ public class EnemyAI : MonoBehaviour
     public float starSpeed;
     public float followSpeed;
 
+    Animator animator;
+
+
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         // Se llenan las variables con los componentes
         enemyAggro = GetComponent<EnemyAggro>();
 
@@ -62,6 +67,7 @@ public class EnemyAI : MonoBehaviour
 
     private void EnemyMovement()
     {
+        animator.SetFloat("Speed", navMeshAgent.speed);
         // Se valida si la variable de EnemyAggro es verdadera, para que el enemigo se mueva a la posici�n del jugador
         // Si es falsa el enemigo mantiene su posici�n
         if (enemyAggro.isAggro)

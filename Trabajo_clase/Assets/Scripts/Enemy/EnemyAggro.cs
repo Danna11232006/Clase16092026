@@ -46,6 +46,7 @@ public class EnemyAggro : MonoBehaviour
 
     public void EnemyDamage()
     {
+        playerTransform.GetComponent<PlayerStats>().PlayerDamage();
         Debug.Log ("Salud del jugador es " + playerTransform.GetComponent<PlayerStats>().health);
 
     }
