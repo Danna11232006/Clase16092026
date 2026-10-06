@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1667550029}
-  offset: {x: 0, y: 8, z: -3}
+  offset: {x: 0, y: 14, z: -16}
   followSpeed: 0
 --- !u!1 &410087039
 GameObject:
@@ -5232,7 +5232,7 @@ Transform:
   m_GameObject: {fileID: 5536041119819719318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89918613, y: -0.63336957, z: -2.6966288}
+  m_LocalPosition: {x: -0.89918613, y: -1.3, z: -2.6966288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5457,7 +5457,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.52
+  m_Radius: 2.62
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &919132148703024682
 NavMeshAgent:
@@ -5469,11 +5469,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 8
+  m_Speed: 3
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 500
-  m_StoppingDistance: 0
+  m_AngularSpeed: 360
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5525,7 +5525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAggro: 0
-  distanceToAggro: 14.59
+  distanceToAggro: 15
 --- !u!65 &919132148703024686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5863,7 +5863,7 @@ Transform:
   m_GameObject: {fileID: 3264819597294255023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.46, y: -1.6865, z: -0.94464}
+  m_LocalPosition: {x: -7.46, y: -3.301, z: -0.94464}
   m_LocalScale: {x: 13.641389, y: 2.798258, z: 13.641389}
   m_ConstrainProportionsScale: 0
   m_Children: []
