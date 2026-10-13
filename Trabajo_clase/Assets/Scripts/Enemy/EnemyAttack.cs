@@ -6,7 +6,9 @@ public class EnemyAttack : MonoBehaviour
 {
     [HideInInspector] public bool isAttacking;
 
-    Animator animator; 
+    [SerializeField] float rotationSpeed = 10f;
+
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +22,40 @@ public class EnemyAttack : MonoBehaviour
         animator.SetBool("Attack", isAttacking);
     }
 
-    public void OnTriggerEnter (Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        transform .rotation = Quaternion.LookRotation(other.transform.position, Vector3.up);
-        isAttacking = true;
-        Debug.Log ("Esta atacando");
+        {
+            isAttacking = true;
+            Debug.Log("Esta atacando");
+            Debug.Log("Sophia entró al área del enemigo");
+        }
     }
 
-    public void OnTriggerExit (Collider other)
+    // Se ejecuta en cada frame mientras el jugador sigue dentro del área
+    public void OnTriggerStay(Collider other)
     {
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
+            // Dirección desde el enemigo hacia el jugador
+            Vector3 direction = other.transform.position - transform.position;
+            direction.y = 0f; // evita que el enemigo se incline hacia arriba o abajo
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
             isAttacking = false;
-            Debug.Log ("No esta atacando");
+            Debug.Log("No esta atacando");
+            Debug.Log("Sophia salió del área del enemigo");
         }
     }
 }
